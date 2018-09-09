@@ -1,12 +1,9 @@
 server:
-  port: 8071
+  port: 8080
 
 spring:
   application:
-    name: service-b
-  sleuth:
-    sampler:
-      probability: 1
+    name: service-a
   cloud:
     config:
       discovery:
@@ -20,18 +17,12 @@ spring:
         max-attempts: 10
   rabbitmq:
     host: localhost
+  sleuth:
+    sampler:
+      probability: 1
   zipkin:
     sender:
       type: web
-
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
 management:
   endpoints:
     web:
@@ -42,19 +33,21 @@ management:
       enabled: true
     health:
       show-details: ALWAYS
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+
 
 ---
 spring:
   profiles: docker
   application:
-    name: service-b
-  sleuth:
-    sampler:
-      probability: 1
-  zipkin:
-    base-url: http://zipkin:9411/
-    sender:
-      type: web
+    name: service-a
   cloud:
     config:
       discovery:
@@ -68,13 +61,20 @@ spring:
         max-attempts: 10
   rabbitmq:
     host: rabbitmq
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    base-url: http://zipkin:9411/
+    sender:
+      type: web
 
 server:
-  port: 8070
+    port: 8080
 
 eureka:
   instance:
-    hostname: service-b
+    hostname: service-a
     prefer-ip-address: true
   client:
     registerWithEureka: true

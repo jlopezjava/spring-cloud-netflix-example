@@ -1,18 +1,9 @@
 server:
-  port: 8100
-  
+  port: 8040
+
 spring:
-  profiles:
-    active: native
   application:
-    name: config-server
-  rabbitmq:
-    host: localhost
-  cloud:
-    config:
-      server:
-        native:
-          search-locations: classpath:/config
+    name: admin-dashboard
 
 eureka:
   instance:
@@ -36,21 +27,14 @@ management:
 spring:
   profiles: docker
   application:
-    name: config-server
-  rabbitmq:
-    host: rabbitmq
-  cloud:
-    config:
-      server:
-        native:
-          search-locations: file:/app/config
+    name: admin-dashboard
 
 server:
-  port: 8100
+  port: 8040
 
 eureka:
   instance:
-    hostname: config-server
+    hostname: admin-dashboard
     prefer-ip-address: true
   client:
     registerWithEureka: true

@@ -16,7 +16,6 @@ The registry center uses the eureka, if you want to use consul, you can refer to
 docker-compose up -d
 ```
 if you want to start more serve, you should use 
-reintentar la ejecucion de este script ya que necesita dependencias
 ```shell
 docker-compose scale service-a=2 service-b=3  
 ```

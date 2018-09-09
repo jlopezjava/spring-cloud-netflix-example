@@ -26,26 +26,6 @@ config-server:
   volumes:
     - ./config-server/config:/app/config
 
-
-zuul:
-  image:  spring-cloud-netflix-example/zuul
-  ports:
-    - "8060:8060"
-  links:
-    - "eureka-server"
-    - "config-server"
-    - "service-a"
-    - "rabbitmq"
-    - "zipkin"
-
-hystrix-dashboard:
-  image:  spring-cloud-netflix-example/hystrix-dashboard
-  ports:
-    - "8050:8050"
-  links:
-    - "eureka-server"
-    
-
 service-b:
   image:  spring-cloud-netflix-example/service-b
   links:
@@ -77,3 +57,21 @@ admin-dashboard:
     - "service-b"
     - "zuul"
     - "hystrix-dashboard"
+
+zuul:
+  image:  spring-cloud-netflix-example/zuul
+  ports:
+    - "8060:8060"
+  links:
+    - "eureka-server"
+    - "config-server"
+    - "service-a"
+    - "rabbitmq"
+    - "zipkin"
+
+hystrix-dashboard:
+  image:  spring-cloud-netflix-example/hystrix-dashboard
+  ports:
+    - "8050:8050"
+  links:
+    - "eureka-server"
