@@ -31,8 +31,8 @@ docker-compose -f docker-compose-dev.yml up -d
 * Spring Cloud Config
 * Spring Boot Admin
 * Spring Boot
-* ZipKin
-* RabbitMQ
+* ZipKin 
+* RabbitMQ -- No esta funcionadno con google cloud  utilizando rabbit mq como service y no como docker images
 * Docker
 * Swagger
 
